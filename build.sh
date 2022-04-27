@@ -303,11 +303,7 @@ fi
 if buildAll || hasArg cudf; then
 
     cd ${REPODIR}/python/cudf
-    if [[ ${INSTALL_TARGET} != "" ]]; then
-        PARALLEL_LEVEL=${PARALLEL_LEVEL} python setup.py build_ext -j${PARALLEL_LEVEL} install --single-version-externally-managed --record=record.txt
-    else
-        PARALLEL_LEVEL=${PARALLEL_LEVEL} python setup.py build_ext --inplace -j${PARALLEL_LEVEL} --library-dir=${LIBCUDF_BUILD_DIR}
-    fi
+    PARALLEL_LEVEL=${PARALLEL_LEVEL} python setup.py build_ext --inplace -j${PARALLEL_LEVEL} --library-dir=${LIBCUDF_BUILD_DIR}
 fi
 
 # Build and install the dask_cudf Python package
